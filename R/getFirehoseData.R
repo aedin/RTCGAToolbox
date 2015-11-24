@@ -46,18 +46,18 @@ getFirehoseData <- function(dataset, runDate=NULL, gistic2_Date=NULL, RNAseq_Gen
   if(!class(dataset)=="character" || is.null(dataset) || !length(dataset) == 1 ) {stop('Please set "dataset" parameter! You should specify one dataset name. Ex: dataset="BRCA"...')}
 
   runDatasets <- getFirehoseDatasets()
-
+  print(runDate)
   if(!any(runDatasets==dataset)){stop('Please use valid dataset name! "getFirehoseDatasets" function gives you the vector of valid dataset names!')}
   if(!is.null(runDate))
   {
-    if(!class(runDate)=="character" || !length(runDate) == 1 || !base:::nchar(runDate) == 8)
+    if(!class(runDate)=="character" || !length(runDate) == 1 || !base::nchar(runDate) == 8)
     {stop('Please set "runDate" parameter! You should specify one Firehose run date. Ex: runDate="20140416"...')}
     runDateList <- getFirehoseRunningDates()
     if(!any(runDateList==runDate)){stop('Please use valid run date! "getFirehoseRunningDates" function gives you the vector of valid dates!')}
   }
   if(!is.null(gistic2_Date))
   {
-    if(!class(gistic2_Date)=="character" || !length(gistic2_Date) == 1 || !base:::nchar(gistic2_Date) == 8)
+    if(!class(gistic2_Date)=="character" || !length(gistic2_Date) == 1 || !base::nchar(gistic2_Date) == 8)
     {stop('Please set "gistic2_Date" parameter! You should specify one Firehose run date. Ex: gistic2_Date="20140115"...')}
     runGisticDate <- getFirehoseAnalyzeDates()
     if(!any(runGisticDate==gistic2_Date)){stop('Please use valid analyze date for GISTIC! "getFirehoseAnalyzeDates" function gives you the vector of valid dates!')}
